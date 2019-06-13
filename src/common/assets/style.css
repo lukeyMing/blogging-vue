@@ -1,0 +1,38 @@
+body {
+    color: #323233;
+    font-family: 'PingFang SC', Helvetica, 'STHeiti STXihei', 'Microsoft YaHei', Tohoma, Arial, sans-serif;
+    line-height: 1;
+    background-color: #f8f8f8;
+    -webkit-font-smoothing: antialiased;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.text-center{ text-align: center}
+.border-none,.border-none:after {border: none!important;}
+.mb-4{
+    margin-bottom: 1.5rem !important;
+}
+.mb-7{
+    margin-bottom: 3rem !important;
+}
+
+.van-nav-bar {
+    height: 56px;
+    line-height: 56px;
+}
+.van-nav-bar .van-icon {
+    color: #969799;
+    font-size: 24px;
+    cursor: pointer;
+}
+.van-nav-bar .van-nav-bar__text {
+    font-size: 17px;
+    color: #969799;
+}
+.van-nav-bar .van-nav-bar__title {
+    font-size: 17px;
+    text-transform: capitalize;
+}
