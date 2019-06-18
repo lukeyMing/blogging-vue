@@ -2,16 +2,28 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import {saveToken, saveUser, loadToken, loadUser} from '../common/js/cache';
 
-Vue.use(Vuex)
+
+Vue.use(Vuex);
 
 const state = {
-    user: {},
-    token: "",
+    user: loadUser(false),
+    token: loadToken(false),
 };
 
 const getters = {
-    user: state => state.user,
-    token: state => state.token,
+    getUser: state => {
+        if (state.user) {
+            return state.user
+        }
+        state.user = loadUser({});
+        return  state.user
+    },
+    getToken: state => {
+        if (state.token) {
+            return state.token
+        }
+        return loadToken("")
+    },
 };
 
 const mutations = {
@@ -24,11 +36,9 @@ const mutations = {
 };
 
 const actions = {
-    saveUser : function ({commit}, user) {
+    loginSaveUser : function ({commit}, user) {
         commit("setUser", saveUser(user))
-    },
-    saveToken : function ({commit}, token) {
-        commit("setToken", saveToken(token))
+        commit("setToken", saveToken(user.token))
     }
 };
 

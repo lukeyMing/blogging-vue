@@ -6,12 +6,12 @@
             <p>Login to manage your account.</p>
         </header>
         <van-cell-group class="form-group mb-4">
-            <van-field  v-model="email" type="text"  placeholder="email"  left-icon="manager"></van-field>
-            <van-field  v-model="password"  type="password" placeholder="password"  left-icon="lock"></van-field>
+            <van-field v-model="account" type="text" placeholder="email" left-icon="manager"></van-field>
+            <van-field v-model="password" type="password" placeholder="password" left-icon="lock"></van-field>
         </van-cell-group>
 
         <div class="form-group">
-            <van-button type="danger"   block>Login</van-button>
+            <van-button :loading="loginLoading"  loading-type="spinner" loading-text="login..." type="danger" @click="userLogin()" block>Login</van-button>
         </div>
         <div class="form-group text-center">
             <span class="small text-muted">Do not have an account?</span>Signup
@@ -20,18 +20,18 @@
 </template>
 
 <script>
-    import {Field, Icon, CellGroup, Row, Col, Button } from 'vant';
+    import {Field, Icon, CellGroup, Row, Col, Button, Toast} from 'vant';
     import CrossNav from '../components/CrossNav';
     import {userLoginApi} from '../api/index'
-
-
+    import { mapActions } from 'vuex';
     export default {
         name: 'login',
         data() {
             return {
+                loginLoading: false,
                 account: "",
-                password:"",
-                type:"email",
+                password: "",
+                type: "email",
             }
         },
         components: {
@@ -42,20 +42,34 @@
             [Col.name]: Col,
             [CrossNav.name]: CrossNav,
             [Button.name]: Button,
+            [Toast.name]: Toast,
         },
         methods: {
-            userLogin(){
-                userLoginApi(this.account, this.password, this.type).then((res) => {
-                    
+            userLogin() {
+                if (this.loginLoading) {
+                    return
+                }
+                this.loginLoading = true;
+               userLoginApi(this.account, this.password, this.type).then((res) => {
+                    this.loginLoading = false;
+                    if (!res){
+                        return false
+                    }
+                    this.loginSaveUser(res.data);
+                    this.$router.push("/")
+                    return true
                 });
-            }
+            },
+            ...mapActions({
+                loginSaveUser : "loginSaveUser"
+            }),
         }
     }
 </script>
 
 <style scoped>
- .login{
-     max-width: 400px;
-     margin: 0 auto;
- }
+    .login {
+        max-width: 400px;
+        margin: 0 auto;
+    }
 </style>

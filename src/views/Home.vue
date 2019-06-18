@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+
     <van-tabs>
       <van-tab title="标签1">
         <van-pull-refresh v-model="list[0].refreshing" @refresh="onRefresh(0)">
@@ -30,7 +31,7 @@
 </template>
 
 <script>
-import { Tab, Tabs, List,PullRefresh,Cell } from 'vant';
+import { Tab, Tabs, List,PullRefresh,Cell,Image , DropdownMenu, DropdownItem  } from 'vant';
 export default {
   name: 'Home',
   data(){
@@ -60,7 +61,10 @@ export default {
     [Tabs.name]: Tabs,
     [List.name]: List,
     [Cell.name]: Cell,
-    [PullRefresh.name]: PullRefresh
+    [PullRefresh.name]: PullRefresh,
+    [Image.name]: Image,
+    [DropdownMenu.name]: DropdownMenu,
+    [DropdownItem.name]: DropdownItem,
   },
   methods:{
     onLoad(index) {

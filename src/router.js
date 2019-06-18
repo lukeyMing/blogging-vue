@@ -12,13 +12,18 @@ const UserProfile = () => import('./views/UserProfile.vue');
 const Search = () => import('./views/Search.vue');
 const Login = () => import('./views/Login.vue');
 
+
+// admin
+const AdminHome = () => import('./views/admin/Home.vue')
+
+
 const routes = [
     {
       path: '/',
       name: 'home',
       components: {nav:HeaderNav, body:Home},
       meta: {
-        title: 'home'
+        title: 'WeedingJKL'
       }
     },
     {
@@ -60,10 +65,23 @@ const routes = [
       meta: {
         title: 'user profile'
       }
-    }
+    },
+    {
+        path: '/admin',
+        name: 'admin',
+        components: {nav:HeaderNav, body:AdminHome},
+        meta: {
+            title: 'Admin manage'
+        }
+    },
 ];
 
-const router = new Router({ routes });
+
+
+const router = new Router({
+    mode: 'history',
+    routes
+});
 
 router.beforeEach((to, from, next) => {
   const title = to.meta && to.meta.title;
