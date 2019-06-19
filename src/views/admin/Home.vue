@@ -1,10 +1,11 @@
 <template>
     <div class="home">
-        <van-dropdown-menu>
-            <van-dropdown-item v-model="category" :options="categoryList" @change="changeCategory"></van-dropdown-item>
-            <van-dropdown-item v-model="category" :options="categoryList" @change="changeCategory"></van-dropdown-item>
-            <van-dropdown-item v-model="sort" :options="sortList" @change="changeSort"></van-dropdown-item>
-        </van-dropdown-menu>
+        <div class="top">
+            <van-dropdown-menu>
+                <van-dropdown-item v-model="category" :options="categoryList" @change="changeCategory"></van-dropdown-item>
+                <van-dropdown-item v-model="sort" :options="sortList" @change="changeSort"></van-dropdown-item>
+            </van-dropdown-menu>
+        </div>
         <van-pull-refresh v-model="medias.refreshing" @refresh="onRefresh()">
             <van-list v-model="medias.loading" :finished="medias.finished" finished-text="没有更多了" @load="onLoad">
                 <admin-card v-for="(item, index) in medias.list" :key="index" :keyIndex="index"  :album="item" :tagList="tagList" @delete="deleteItem"></admin-card>
@@ -14,7 +15,7 @@
 </template>
 
 <script>
-    import {List, PullRefresh, Card, DropdownMenu, DropdownItem } from 'vant';
+    import {List, PullRefresh, Card, DropdownMenu, DropdownItem, Tab, Tabs  } from 'vant';
     import AdminCard from '../../components/admin/card'
     import {getAdminAlbumListApi, getAdminInitApi} from '../../api/index'
     export default {
@@ -40,9 +41,11 @@
             [List.name]: List,
             [Card.name]: Card,
             [PullRefresh.name]: PullRefresh,
-            AdminCard,
             [DropdownMenu.name]: DropdownMenu,
             [DropdownItem.name]: DropdownItem,
+            [Tab.name]: Tab,
+            [Tabs.name]: Tabs,
+            AdminCard,
         },
         created(){
             this.getInit()

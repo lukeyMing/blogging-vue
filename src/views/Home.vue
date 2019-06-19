@@ -1,32 +1,11 @@
 <template>
   <div class="home">
-
-    <van-tabs>
-      <van-tab title="标签1">
-        <van-pull-refresh v-model="list[0].refreshing" @refresh="onRefresh(0)">
-          <van-list v-model="list[0].loading" :finished="list[0].finished" finished-text="我是完成文案" @load="onLoad(0)">
-            <van-cell v-for="item in list[0].items" :key="item" :title="item"></van-cell>
-          </van-list>
-        </van-pull-refresh>
-      </van-tab>
-
-      <van-tab title="出错啦">
-        <van-pull-refresh v-model="list[1].refreshing" @refresh="onRefresh(1)">
-          <van-list
-                  v-model="list[1].loading"
-                  :finished="list[1].finished"
-                  :error.sync="list[1].error"
-                  error-text="我是出错文案"
-                  @load="onLoad(1)"
-          >
-            <van-cell
-                    v-for="item in list[1].items"
-                    :key="item"
-                    :title="item"></van-cell>
-          </van-list>
-        </van-pull-refresh>
-      </van-tab>
-    </van-tabs>
+    <div class="top">
+      <!--<van-dropdown-menu>
+        <van-dropdown-item v-model="category" :options="categoryList" @change="changeCategory"></van-dropdown-item>
+        <van-dropdown-item v-model="sort" :options="sortList" @change="changeSort"></van-dropdown-item>
+      </van-dropdown-menu>-->
+    </div>
   </div>
 </template>
 
@@ -38,21 +17,19 @@ export default {
     return {
       active:2,
       dataList:[],
-      list: [
-        {
-          items: [],
-          refreshing: false,
-          loading: false,
-          error: false,
-          finished: false
-        },
-        {
-          items: [],
-          refreshing: false,
-          loading: false,
-          error: false,
-          finished: false
-        }
+      category: 0,
+      sort: 0,
+      categoryList: [
+        { text: 'wedding ideas', value: 0 },
+        { text: 'wedding photography', value: 1 },
+        { text: 'wedding dress', value: 2 },
+        { text: 'wedding shoes', value: 3 },
+        { text: 'wedding invitations', value: 4 },
+        { text: 'wedding decoration', value: 5 },
+      ],
+      sortList: [
+        { text: 'ASC', value: 0 },
+        { text: 'DESC', value: 0 },
       ]
     }
   },
