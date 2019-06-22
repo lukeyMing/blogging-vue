@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Home from './views/media/Home.vue'
 import HeaderNav from './components/HeaderNav.vue'
 import BackNav from './components/BackNav.vue'
 
 Vue.use(Router);
 
 const CategoryPost = () => import('./views/CategoryPost.vue');
-const TagPost = () => import('./views/TagPost.vue');
+const TagMediaList = () => import('./views/media/TagMediaList.vue');
 const UserProfile = () => import('./views/UserProfile.vue');
 const Search = () => import('./views/Search.vue');
 const Login = () => import('./views/Login.vue');
@@ -51,11 +51,11 @@ const routes = [
       }
     },
     {
-      path: '/tag/post',
-      name: 'tagPost',
-      components: {nav:HeaderNav, body:TagPost},
+      path: '/media/tag-media-list',
+      name: 'tagMediaList',
+      components: {nav:HeaderNav, body:TagMediaList},
       meta: {
-        title: 'tag post'
+        title: 'tags'
       }
     },
     {

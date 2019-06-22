@@ -1,14 +1,15 @@
 <template>
-    <div class="home">
-        <div class="top">
-            <van-dropdown-menu>
-                <van-dropdown-item v-model="category" :options="categoryList" @change="changeCategory"></van-dropdown-item>
-                <van-dropdown-item v-model="sort" :options="sortList" @change="changeSort"></van-dropdown-item>
-            </van-dropdown-menu>
-        </div>
+    <div class="home mt-fixed container-fluid">
         <van-pull-refresh v-model="medias.refreshing" @refresh="onRefresh()">
             <van-list v-model="medias.loading" :finished="medias.finished" finished-text="没有更多了" @load="onLoad">
-                <admin-card v-for="(item, index) in medias.list" :key="index" :keyIndex="index"  :album="item" :tagList="tagList" @delete="deleteItem"></admin-card>
+                <masonry :cols="{default: 3, 1000: 3, 700: 2, 576: 1}" :gutter="{default: '10px', 700: '15px'}">
+                    <admin-card v-for="(item, index) in medias.list"
+                                :key="index" :keyIndex="index"
+                                :album="item"
+                                :tagList="tagList"
+                                :categoryList="categoryList"
+                                @delete="deleteItem"></admin-card>
+                </masonry>
             </van-list>
         </van-pull-refresh>
     </div>
@@ -22,11 +23,6 @@
         name: 'AdminHome',
         data() {
             return {
-                category: 0,
-                sort: 0,
-                categoryList: [],
-                sortList: [],
-                tagList: [],
                 medias: {
                     list: [],
                     lastId: 0,
@@ -34,7 +30,9 @@
                     loading: false,
                     error: false,
                     finished: false
-                }
+                },
+                categoryList: [],
+                tagList: [],
             }
         },
         components: {
@@ -79,13 +77,13 @@
             },
             getInit(){
                 getAdminInitApi().then((res) =>{
-                    let category = res.data.Category;
-                    let sort = res.data.Sort;
+                    let category = res.data.categoryList;
+                    let tagList = res.data.tagList;
                     for ( let i in category) {
-                        this.categoryList.push( { text: category[i].Value, value: category[i].Key })
+                        this.categoryList.push( { text: category[i], value: i })
                     }
-                    for ( let j in sort) {
-                        this.sortList.push( { text: sort[j].Value, value: category[j].Key })
+                    for ( let j in tagList) {
+                        this.tagList.push( { text: tagList[j], value: j })
                     }
                 })
             },

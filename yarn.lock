@@ -739,8 +739,8 @@
 
 "@vue/babel-helper-vue-jsx-merge-props@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.npm.taobao.org/@vue/babel-helper-vue-jsx-merge-props/download/@vue/babel-helper-vue-jsx-merge-props-1.0.0.tgz#048fe579958da408fb7a8b2a3ec050b50a661040"
-  integrity sha1-BI/leZWNpAj7eosqPsBQtQpmEEA=
+  resolved "https://registry.yarnpkg.com/@vue/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-1.0.0.tgz#048fe579958da408fb7a8b2a3ec050b50a661040"
+  integrity sha512-6tyf5Cqm4m6v7buITuwS+jHzPlIPxbFzEhXR5JGZpbrvOcp1hiQKckd305/3C7C36wFekNTQSxAtgeM0j0yoUw==
 
 "@vue/babel-plugin-transform-vue-jsx@^1.0.0":
   version "1.0.0"
@@ -7768,10 +7768,10 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vant@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/vant/-/vant-2.0.0.tgz#3d87112aac1061f007bdce056a7af47d9ec0db05"
-  integrity sha512-nJx4EpDGWWafHVObrUst8VMHfaI9DkUuLyA7PM0iBGGp2eZI+itmxwGmucdWLOy5931ASasIqbbbqMBnrrSGHw==
+vant@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/vant/-/vant-2.0.2.tgz#e3c77d0ff1f310c170fec9a5205144bda9b7cebc"
+  integrity sha512-IQTBhFvAXENFrUgEIrYyR4w0UC2aoomWWhbuRrmoj0hIQUcW/MEYvUGCPt68fvtHWsQ5vNFd1d9/T//xcZWiWg==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@vant/icons" "1.1.8"
@@ -7848,6 +7848,11 @@ vue-loader@^15.7.0:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
+
+vue-masonry-css@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/vue-masonry-css/-/vue-masonry-css-1.0.3.tgz#a5e7bb248570eeedcd358637d3f1f4fc7f0c5f86"
+  integrity sha512-viecHQiHVLez7HlYUQsv1wJb2MT/RDSzkDp6m3In41vPrk6OsBmT2qRE8LZqYIA4daIwrnx/Xm8h4fjOpuE3hw==
 
 vue-router@^3.0.3:
   version "3.0.6"
